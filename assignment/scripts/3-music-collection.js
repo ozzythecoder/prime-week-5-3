@@ -25,10 +25,24 @@ console.log(addtoCollection('Broken Bells', 'Broken Bells', 2010))
 console.log(collection);
 
 function showCollection(array) {
-  console.log(array.length);
+  console.log('The record collection consists of', array.length, ' albums:');
   for (let item of array) {
-    console.log(`${item.title} by ${item.artist}, released ${item.yearPublished}`);
+    console.log(`'${item.title}' by ${item.artist}, released ${item.yearPublished}`);
   }
 }
 
 showCollection(collection);
+
+function findByArtist(artist) {
+  let arr = [];
+
+  for (let item of collection) {
+    if (item.artist === artist) {
+      arr.push(item);
+    }
+  }
+
+  return arr;
+}
+
+console.log('Finding all albums by Kendrick Lamar:', findByArtist('Kendrick Lamar'));
