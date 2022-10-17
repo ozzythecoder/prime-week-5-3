@@ -14,3 +14,12 @@ function addtoCollection(title, artist, yearPublished) {
 
   return obj;
 }
+
+console.log(addtoCollection('Of Unsound Mind', 'Lydia Liza', 2019))
+console.log(addtoCollection('DAMN.', 'Kendrick Lamar', 2017))
+console.log(addtoCollection('Mr. Morale & the Big Steppers', 'Kendrick Lamar', 2022))
+console.log(addtoCollection('For My Mama And Anyone Who Look Like Her', 'McKinley Dixon', 2021))
+console.log(addtoCollection('Ten', 'Pearl Jam', 1991))
+console.log(addtoCollection('Broken Bells', 'Broken Bells', 2010))
+
+console.log(collection);
