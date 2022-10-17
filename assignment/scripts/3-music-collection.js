@@ -4,12 +4,13 @@ let collection = [];
 
 // ADD TO COLLECTION
 
-function addtoCollection(title, artist, yearPublished) {
+function addtoCollection(title, artist, yearPublished, tracks) {
   
   let obj = {
     title: title,
     artist: artist,
-    yearPublished: yearPublished
+    yearPublished: yearPublished,
+    tracks: tracks
   }
 
   collection.push(obj);
@@ -17,12 +18,18 @@ function addtoCollection(title, artist, yearPublished) {
   return obj;
 }
 
-console.log(addtoCollection('Of Unsound Mind', 'Lydia Liza', 2019))
-console.log(addtoCollection('DAMN.', 'Kendrick Lamar', 2017))
-console.log(addtoCollection('Mr. Morale & the Big Steppers', 'Kendrick Lamar', 2022))
-console.log(addtoCollection('Few Good Things', 'Saba', 2022))
-console.log(addtoCollection('Ten', 'Pearl Jam', 1991))
-console.log(addtoCollection('Broken Bells', 'Broken Bells', 2010))
+console.log(addtoCollection('Of Unsound Mind', 'Lydia Liza', 2019,
+  ['1. Gardenia: 3:25', '2: Crow On A Branch: 3:52', '3. Be Minor: 4:56'] ))
+console.log(addtoCollection('DAMN.', 'Kendrick Lamar', 2017,
+  ['1. BLOOD.: 1:58', '2. DNA.: 3:06', '3: YAH.: 2:40']))
+console.log(addtoCollection('Mr. Morale & the Big Steppers', 'Kendrick Lamar', 2022,
+  ['1. United In Grief: 4:15', '2. N95: 3:16', '3. Worldwide Steppers: 3:23']))
+console.log(addtoCollection('Few Good Things', 'Saba', 2022,
+  ['1. Free Samples: 2:08', '2. One Way: 2:46', '3. Survivor\'s Guilt: 3:43']))
+console.log(addtoCollection('Ten', 'Pearl Jam', 1991,
+  ['1. Once: 3:52', '2. Even Flow: 4:54', '3. Alive: 5:41']))
+console.log(addtoCollection('Broken Bells', 'Broken Bells', 2010,
+  ['1. The High Road: 3:52', '2. Vaporize: 3:30', '3: Your Head Is On Fire: 3:04']))
 
 console.log(collection); // test
 
@@ -73,7 +80,7 @@ function search(criteria) {
       arr.push(item);
     }
 
-    // ANOTHER OPTION – this code will return searches that only include one of the two criteria
+    // ANOTHER OPTION – this code will correctly return searches that only include one of the two search criteria
     //
     // if (item.artist === criteria.artist || !criteria.artist) {
     //   if (item.yearPublished === criteria.year || !criteria.year) {
@@ -88,7 +95,6 @@ function search(criteria) {
 
 // Testing search
 
-
 console.log('Searching for albums released by Kendrick Lamar in 2022:', search( { artist: 'Kendrick Lamar', year: 2022 } ));
 console.log('Searching for albums released by Ray Charles:', search( { artist: 'Ray Charles' } ));
 console.log('Searching for albums with no search criteria:', search());
@@ -97,3 +103,6 @@ console.log('Searching for albums with an empty object as criteria:', search( {}
 // Testing search with enhanced functionality
 // console.log('Searching for albums by Kendrick Lamar:', search( { artist: 'Kendrick Lamar' } ));
 // console.log('Searching for albums released in 2022:', search( { year: 2022 } ));
+
+// ADDING TRACKS
+
