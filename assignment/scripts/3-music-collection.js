@@ -23,3 +23,12 @@ console.log(addtoCollection('Ten', 'Pearl Jam', 1991))
 console.log(addtoCollection('Broken Bells', 'Broken Bells', 2010))
 
 console.log(collection);
+
+function showCollection(array) {
+  console.log(array.length);
+  for (let item of array) {
+    console.log(`${item.title} by ${item.artist}, released ${item.yearPublished}`);
+  }
+}
+
+showCollection(collection);
