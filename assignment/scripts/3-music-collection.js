@@ -4,12 +4,12 @@ let collection = [];
 
 // ADD TO COLLECTION
 
-function addtoCollection(title, artist, yearPublished, tracks) {
+function addtoCollection(title, artist, year, tracks) {
   
   let obj = {
     title: title,
     artist: artist,
-    yearPublished: yearPublished,
+    year: year, // shortened from yearPublished
     tracks: tracks
   }
 
@@ -110,34 +110,45 @@ function search(criteria) {
   // Loop over collection
   for (let item of collection) {
 
-    // If artist & year are a match, push to the array
-    if (item.artist === criteria.artist && item.yearPublished === criteria.year) {
-      arr.push(item);
-    }
+    // If artist is a match or empty, check title
+    if (criteria.artist == item.artist || !criteria.artist) {
+      // If title is a match or empty, check year
+      if (criteria.title == item.title || !criteria.title) {
+        // If year is a match or empty, check track titles
+        if (criteria.year == item.year || !criteria.year) {
+          
+          // If track title is empty, push album to the array
+          if (!criteria.trackTitle) { arr.push(item) } else {
+            
+            // otherwise loop over track titles
+            for (let track of item.tracks) {
+              // If track title is a match, push album to the array
+              if (criteria.trackTitle == track.title) {
+                arr.push(item);
+              }
 
-    // ANOTHER OPTION – this code will correctly return searches that only include one of the two search criteria
-    //
-    // if (item.artist === criteria.artist || !criteria.artist) {
-    //   if (item.yearPublished === criteria.year || !criteria.year) {
-    //     arr.push(item);
-    //   }
-    // }
-  
-  }
+            } // end track for-of
+          } // end track if
+        } // end year if
+      } // end title if
+    } // end artist if
+  } // end collection for-of loop
 
   return arr; // Return array
-}
+
+} // end function search()
 
 // Testing search
 
-console.log('Searching for albums released by Kendrick Lamar in 2022:', search( { artist: 'Kendrick Lamar', year: 2022 } ));
-console.log('Searching for albums released by Ray Charles:', search( { artist: 'Ray Charles' } ));
-console.log('Searching for albums with no search criteria:', search());
-console.log('Searching for albums with an empty object as criteria:', search( {} ));
+console.log('Searching for albums released by Kendrick Lamar',
+  search( { artist: 'Kendrick Lamar' } ));
 
-// Testing search with enhanced functionality
-// console.log('Searching for albums by Kendrick Lamar:', search( { artist: 'Kendrick Lamar' } ));
-// console.log('Searching for albums released in 2022:', search( { year: 2022 } ));
+console.log('Searching for albums released by Kendrick Lamar in 2022, with a track called "N95":',
+  search( { artist: 'Kendrick Lamar', year: 2022, trackTitle: 'N95' } ));
+
+// console.log('Searching for albums released by Ray Charles:', search( { artist: 'Ray Charles' } ));
+// console.log('Searching for albums with no search criteria:', search());
+// console.log('Searching for albums with an empty object as criteria:', search( {} ));
 
 // ADDING TRACKS
 
