@@ -51,6 +51,14 @@ console.log(
 )
 
 console.log(
+  addtoCollection( 'Feed Me to the Forest', 'Feed Me to the Forest', 2017,
+  [ { title: 'Walking in the Direction of a Car Crash', duration: '2:15' },
+    { title: 'Survivor\'s Guilt', duration: '4:40' },
+    { title: 'If You Love the Ocean So Much, Then Drown in It', duration: '2:50' }]
+  )
+)
+
+console.log(
   addtoCollection('Ten', 'Pearl Jam', 1991,
   [ { title: 'Once', duration: '3:52' },
     { title: 'Even Flow', duration: '4:54' },
@@ -101,6 +109,9 @@ console.log('Finding all albums by Kendrick Lamar:', findByArtist('Kendrick Lama
 console.log('*************************')
 console.log('Stretch Goals - Search Function')
 
+// This search function will return any albums that match all of the *included* criteria,
+// even if not every *possible* criteria is included. It will also match regardless of type case.
+
 function search(criteria) {
   let arr = [];
   
@@ -111,9 +122,10 @@ function search(criteria) {
   for (let item of collection) {
 
     // If artist is a match or empty, check title
-    if (criteria.artist == item.artist || !criteria.artist) {
-      // If title is a match or empty, check year
-      if (criteria.title == item.title || !criteria.title) {
+    if (!criteria.artist || criteria.artist.toLowerCase() === item.artist.toLowerCase()) {
+
+      // If album title is a match or empty, check year
+      if (!criteria.title || criteria.title.toLowerCase() == item.title.toLowerCase()) {
         // If year is a match or empty, check track titles
         if (criteria.year == item.year || !criteria.year) {
           
@@ -123,7 +135,7 @@ function search(criteria) {
             // otherwise loop over track titles
             for (let track of item.tracks) {
               // If track title is a match, push album to the array
-              if (criteria.trackTitle == track.title) {
+              if (criteria.trackTitle.toLowerCase() == track.title.toLowerCase()) {
                 arr.push(item);
               }
 
@@ -141,14 +153,26 @@ function search(criteria) {
 // Testing search
 
 console.log('Searching for albums released by Kendrick Lamar',
-  search( { artist: 'Kendrick Lamar' } ));
+  search( { artist: 'kendrick lamar' } )); // test ok
+
+console.log('Searching for albums with a track called "Survivor\'s Guilt"', 
+  search( { trackTitle: 'Survivor\'s Guilt' } ) ) // test ok
+
+console.log('Searching for albums released in 2022', 
+  search ( { year: 2022 } ) ) // test ok
 
 console.log('Searching for albums released by Kendrick Lamar in 2022, with a track called "N95":',
-  search( { artist: 'Kendrick Lamar', year: 2022, trackTitle: 'N95' } ));
+  search( { artist: 'Kendrick Lamar', year: 2022, trackTitle: 'N95' } )); // test ok
 
-// console.log('Searching for albums released by Ray Charles:', search( { artist: 'Ray Charles' } ));
-// console.log('Searching for albums with no search criteria:', search());
-// console.log('Searching for albums with an empty object as criteria:', search( {} ));
+console.log('Searching for an album with all string criteria listed with insensitive case:', 
+  search( { artist: 'lydia liza', title: 'OF UNSOUND MIND', trackTitle: 'crOw oN a braNCH' } )) // test ok
+
+console.log('Searching for albums released by Ray Charles (none in collection):',
+  search( { artist: 'Ray Charles' } )); // test ok - returns empty
+
+console.log('Searching for albums with no search criteria:', search()); // test ok - returns full collection
+
+console.log('Searching for albums with an empty object as criteria:', search( {} )); // test ok - returns full collection
 
 // ADDING TRACKS
 
