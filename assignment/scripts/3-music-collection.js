@@ -18,18 +18,53 @@ function addtoCollection(title, artist, yearPublished, tracks) {
   return obj;
 }
 
-console.log(addtoCollection('Of Unsound Mind', 'Lydia Liza', 2019,
-  ['1. Gardenia: 3:25', '2: Crow On A Branch: 3:52', '3. Be Minor: 4:56'] ))
-console.log(addtoCollection('DAMN.', 'Kendrick Lamar', 2017,
-  ['1. BLOOD.: 1:58', '2. DNA.: 3:06', '3: YAH.: 2:40']))
-console.log(addtoCollection('Mr. Morale & the Big Steppers', 'Kendrick Lamar', 2022,
-  ['1. United In Grief: 4:15', '2. N95: 3:16', '3. Worldwide Steppers: 3:23']))
-console.log(addtoCollection('Few Good Things', 'Saba', 2022,
-  ['1. Free Samples: 2:08', '2. One Way: 2:46', '3. Survivor\'s Guilt: 3:43']))
-console.log(addtoCollection('Ten', 'Pearl Jam', 1991,
-  ['1. Once: 3:52', '2. Even Flow: 4:54', '3. Alive: 5:41']))
-console.log(addtoCollection('Broken Bells', 'Broken Bells', 2010,
-  ['1. The High Road: 3:52', '2. Vaporize: 3:30', '3: Your Head Is On Fire: 3:04']))
+console.log(
+  addtoCollection( 'Of Unsound Mind', 'Lydia Liza', 2019,
+  [ { title: 'Gardenia', duration: '3:25' },
+    { title: 'Crow On A Branch', duration: '3:52' },
+    { title: 'Be Minor', duration: '4:56' } ]
+  )
+)
+
+console.log(
+  addtoCollection( 'DAMN.', 'Kendrick Lamar', 2017,
+  [ { title: 'BLOOD.', duration: '1:58' },
+    { title: 'DNA.', duration: '3:06' },
+    { title: 'YAH.', duration: '2:40' } ]
+  )
+)
+
+console.log(
+  addtoCollection( 'Mr. Morale & the Big Steppers', 'Kendrick Lamar', 2022,
+  [ { title: 'United In Grief', duration: '4:15' },
+    { title: 'N95', duration: '3:16' },
+    { title: 'Worldwide Steppers', duration: '3:23' } ]
+  )
+)
+
+console.log(
+  addtoCollection( 'Few Good Things', 'Saba', 2022,
+  [ { title: 'Free Samples', duration: '2:08' },
+    { title: 'One Way', duration: '2:46' },
+    { title: 'Survivor\'s Guilt', duration: '3:43' } ]
+  )
+)
+
+console.log(
+  addtoCollection('Ten', 'Pearl Jam', 1991,
+  [ { title: 'Once', duration: '3:52' },
+    { title: 'Even Flow', duration: '4:54' },
+    { title: 'Alive', duration: '5:41'} ]
+  )
+)
+
+console.log(
+  addtoCollection( 'Broken Bells', 'Broken Bells', 2010,
+  [ { title: 'The High Road', duration: '3:52' },
+    { title: 'Vaporize', duration: '3:30' },
+    { title: 'Your Head Is On Fire', duration: '3:04' } ]
+  )
+)
 
 console.log(collection); // test
 
