@@ -18,62 +18,68 @@ function addtoCollection(title, artist, year, tracks) {
   return obj;
 }
 
-
-addtoCollection( 'Of Unsound Mind', 'Lydia Liza', 2019,
-[ { title: 'Gardenia', duration: '3:25' },
-{ title: 'Crow On A Branch', duration: '3:52' },
-{ title: 'Be Minor', duration: '4:56' } ]
-)
-
-addtoCollection( 'DAMN.', 'Kendrick Lamar', 2017,
-[ { title: 'BLOOD.', duration: '1:58' },
-{ title: 'DNA.', duration: '3:06' },
-{ title: 'YAH.', duration: '2:40' } ]
-)
-
-addtoCollection( 'Mr. Morale & the Big Steppers', 'Kendrick Lamar', 2022,
-[ { title: 'United In Grief', duration: '4:15' },
-{ title: 'N95', duration: '3:16' },
-{ title: 'Worldwide Steppers', duration: '3:23' } ]
-)
-
-addtoCollection( 'Few Good Things', 'Saba', 2022,
-[ { title: 'Free Samples', duration: '2:08' },
-{ title: 'One Way', duration: '2:46' },
-{ title: 'Survivor\'s Guilt', duration: '3:43' } ]
-)
-
-addtoCollection( 'Feed Me to the Forest', 'Feed Me to the Forest', 2017,
-[ { title: 'Walking in the Direction of a Car Crash', duration: '2:15' },
-{ title: 'Survivor\'s Guilt', duration: '4:40' },
-{ title: 'If You Love the Ocean So Much, Then Drown in It', duration: '2:50' }]
-)
-
-addtoCollection('Ten', 'Pearl Jam', 1991,
-[ { title: 'Once', duration: '3:52' },
-{ title: 'Even Flow', duration: '4:54' },
-{ title: 'Alive', duration: '5:41'} ]
-)
-
-addtoCollection( 'Broken Bells', 'Broken Bells', 2010,
-[ { title: 'The High Road', duration: '3:52' },
-{ title: 'Vaporize', duration: '3:30' },
-{ title: 'Your Head Is On Fire', duration: '3:04' } ]
-)
-
+// NOTE - for brevity, I am only including the first three songs on each of these albums.
 
 console.log('👍 addtoCollection() test:')
-console.log(collection); // test ok
+
+console.log(
+addtoCollection( 'Of Unsound Mind', 'Lydia Liza', 2019,
+  [ { title: 'Gardenia', duration: '3:25' },
+    { title: 'Crow On A Branch', duration: '3:52' },
+    { title: 'Be Minor', duration: '4:56' } ]
+),
+
+addtoCollection( 'DAMN.', 'Kendrick Lamar', 2017,
+  [ { title: 'BLOOD.', duration: '1:58' },
+    { title: 'DNA.', duration: '3:06' },
+    { title: 'YAH.', duration: '2:40' } ]
+),
+
+addtoCollection( 'Mr. Morale & the Big Steppers', 'Kendrick Lamar', 2022,
+  [ { title: 'United In Grief', duration: '4:15' },
+    { title: 'N95', duration: '3:16' },
+    { title: 'Worldwide Steppers', duration: '3:23' } ]
+),
+
+addtoCollection( 'Few Good Things', 'Saba', 2022,
+  [ { title: 'Free Samples', duration: '2:08' },
+    { title: 'One Way', duration: '2:46' },
+    { title: 'Survivor\'s Guilt', duration: '3:43' } ]
+),
+
+addtoCollection( 'Feed Me to the Forest', 'Feed Me to the Forest', 2017,
+  [ { title: 'Walking in the Direction of a Car Crash', duration: '2:15' },
+    { title: 'Survivor\'s Guilt', duration: '4:40' },
+    { title: 'If You Love the Ocean So Much, Then Drown in It', duration: '2:50' }]
+),
+
+addtoCollection('Ten', 'Pearl Jam', 1991,
+  [ { title: 'Once', duration: '3:52' },
+    { title: 'Even Flow', duration: '4:54' },
+    { title: 'Alive', duration: '5:41'} ]
+),
+
+addtoCollection( 'Broken Bells', 'Broken Bells', 2010,
+  [ { title: 'The High Road', duration: '3:52' },
+    { title: 'Vaporize', duration: '3:30' },
+    { title: 'Your Head Is On Fire', duration: '3:04' } ]
+)) // test ok
+
+console.log('logging full collection object:', collection); // test ok
 
 // SHOW COLLECTION
 
 function showCollection(array) {
+  
   console.log('The record collection consists of', array.length, 'albums:');
+
   for (let item of array) {
     console.log(`'${item.title}' by ${item.artist}, released ${item.year}:`);
+
+    // Set variable to print track number - this will scale with any number of tracks
     let i = 1;
     for (let track of item.tracks) {
-      console.log(i + '. ' + track.title + ': ' + track.duration);
+      console.log('  ' + i + '. ' + track.title + ': ' + track.duration);
       i++;
     }
   }
@@ -99,9 +105,9 @@ function findByArtist(artist) {
 
   return arr;
 }
-console.log('🎨 findByArtist() test:')
 
-console.log('Finding all albums by Kendrick Lamar:', findByArtist('Kendrick Lamar')); // test
+console.log('🎨 findByArtist() test:')
+console.log('Finding all albums by Kendrick Lamar:', findByArtist('Kendrick Lamar')); // test ok
 
 // STRETCH GOALS
 // SEARCH FUNCTION
@@ -165,14 +171,14 @@ console.log('Searching for albums released by Kendrick Lamar in 2022, with a tra
   search( { artist: 'Kendrick Lamar', year: 2022, trackTitle: 'N95' } )); // test ok
 
 console.log('Searching for an album with all string criteria listed with insensitive case:', 
-  search( { artist: 'lydia liza', title: 'OF UNSOUND MIND', trackTitle: 'crOw oN a braNCH' } )) // test ok
+  search( { artist: 'lydia liza', title: 'OF UNSOUND MIND', trackTitle: 'crOw oN a braNCH' } ))
+// test ok - returns correct entry regardless of case
 
-console.log('Searching for albums released by Ray Charles (none in collection):',
+console.log('Searching for albums released by Ray Charles:',
   search( { artist: 'Ray Charles' } )); // test ok - returns empty
 
-console.log('Searching for albums with no search criteria:', search()); // test ok - returns full collection
+console.log('Searching for albums with no search criteria:', search());
+// test ok - returns full collection
 
-console.log('Searching for albums with an empty object as criteria:', search( {} )); // test ok - returns full collection
-
-// ADDING TRACKS
-
+console.log('Searching for albums with an empty object as criteria:', search( {} ));
+// test ok - returns full collection
