@@ -18,74 +18,73 @@ function addtoCollection(title, artist, year, tracks) {
   return obj;
 }
 
-console.log(
-  addtoCollection( 'Of Unsound Mind', 'Lydia Liza', 2019,
-  [ { title: 'Gardenia', duration: '3:25' },
-    { title: 'Crow On A Branch', duration: '3:52' },
-    { title: 'Be Minor', duration: '4:56' } ]
-  )
+
+addtoCollection( 'Of Unsound Mind', 'Lydia Liza', 2019,
+[ { title: 'Gardenia', duration: '3:25' },
+{ title: 'Crow On A Branch', duration: '3:52' },
+{ title: 'Be Minor', duration: '4:56' } ]
 )
 
-console.log(
-  addtoCollection( 'DAMN.', 'Kendrick Lamar', 2017,
-  [ { title: 'BLOOD.', duration: '1:58' },
-    { title: 'DNA.', duration: '3:06' },
-    { title: 'YAH.', duration: '2:40' } ]
-  )
+addtoCollection( 'DAMN.', 'Kendrick Lamar', 2017,
+[ { title: 'BLOOD.', duration: '1:58' },
+{ title: 'DNA.', duration: '3:06' },
+{ title: 'YAH.', duration: '2:40' } ]
 )
 
-console.log(
-  addtoCollection( 'Mr. Morale & the Big Steppers', 'Kendrick Lamar', 2022,
-  [ { title: 'United In Grief', duration: '4:15' },
-    { title: 'N95', duration: '3:16' },
-    { title: 'Worldwide Steppers', duration: '3:23' } ]
-  )
+addtoCollection( 'Mr. Morale & the Big Steppers', 'Kendrick Lamar', 2022,
+[ { title: 'United In Grief', duration: '4:15' },
+{ title: 'N95', duration: '3:16' },
+{ title: 'Worldwide Steppers', duration: '3:23' } ]
 )
 
-console.log(
-  addtoCollection( 'Few Good Things', 'Saba', 2022,
-  [ { title: 'Free Samples', duration: '2:08' },
-    { title: 'One Way', duration: '2:46' },
-    { title: 'Survivor\'s Guilt', duration: '3:43' } ]
-  )
+addtoCollection( 'Few Good Things', 'Saba', 2022,
+[ { title: 'Free Samples', duration: '2:08' },
+{ title: 'One Way', duration: '2:46' },
+{ title: 'Survivor\'s Guilt', duration: '3:43' } ]
 )
 
-console.log(
-  addtoCollection( 'Feed Me to the Forest', 'Feed Me to the Forest', 2017,
-  [ { title: 'Walking in the Direction of a Car Crash', duration: '2:15' },
-    { title: 'Survivor\'s Guilt', duration: '4:40' },
-    { title: 'If You Love the Ocean So Much, Then Drown in It', duration: '2:50' }]
-  )
+addtoCollection( 'Feed Me to the Forest', 'Feed Me to the Forest', 2017,
+[ { title: 'Walking in the Direction of a Car Crash', duration: '2:15' },
+{ title: 'Survivor\'s Guilt', duration: '4:40' },
+{ title: 'If You Love the Ocean So Much, Then Drown in It', duration: '2:50' }]
 )
 
-console.log(
-  addtoCollection('Ten', 'Pearl Jam', 1991,
-  [ { title: 'Once', duration: '3:52' },
-    { title: 'Even Flow', duration: '4:54' },
-    { title: 'Alive', duration: '5:41'} ]
-  )
+addtoCollection('Ten', 'Pearl Jam', 1991,
+[ { title: 'Once', duration: '3:52' },
+{ title: 'Even Flow', duration: '4:54' },
+{ title: 'Alive', duration: '5:41'} ]
 )
 
-console.log(
-  addtoCollection( 'Broken Bells', 'Broken Bells', 2010,
-  [ { title: 'The High Road', duration: '3:52' },
-    { title: 'Vaporize', duration: '3:30' },
-    { title: 'Your Head Is On Fire', duration: '3:04' } ]
-  )
+addtoCollection( 'Broken Bells', 'Broken Bells', 2010,
+[ { title: 'The High Road', duration: '3:52' },
+{ title: 'Vaporize', duration: '3:30' },
+{ title: 'Your Head Is On Fire', duration: '3:04' } ]
 )
 
-console.log(collection); // test
+
+console.log('👍 addtoCollection() test:')
+console.log(collection); // test ok
 
 // SHOW COLLECTION
 
 function showCollection(array) {
-  console.log('The record collection consists of', array.length, ' albums:');
+  console.log('The record collection consists of', array.length, 'albums:');
   for (let item of array) {
-    console.log(`'${item.title}' by ${item.artist}, released ${item.yearPublished}`);
+    console.log(`'${item.title}' by ${item.artist}, released ${item.year}:`);
+    let i = 1;
+    for (let track of item.tracks) {
+      console.log(i + '. ' + track.title + ': ' + track.duration);
+      i++;
+    }
   }
 }
 
+console.log('**************************')
+console.log('💿 showCollection() test:');
+
 showCollection(collection); // test
+
+console.log('**************************')
 
 // FIND BY ARTIST
 
@@ -100,6 +99,7 @@ function findByArtist(artist) {
 
   return arr;
 }
+console.log('🎨 findByArtist() test:')
 
 console.log('Finding all albums by Kendrick Lamar:', findByArtist('Kendrick Lamar')); // test
 
@@ -107,7 +107,7 @@ console.log('Finding all albums by Kendrick Lamar:', findByArtist('Kendrick Lama
 // SEARCH FUNCTION
 
 console.log('*************************')
-console.log('Stretch Goals - Search Function')
+console.log('🔍 Stretch Goals - Search Function')
 
 // This search function will return any albums that match all of the *included* criteria,
 // even if not every *possible* criteria is included. It will also match regardless of type case.
