@@ -122,7 +122,7 @@ function search(criteria) {
   let arr = [];
   
   // If criteria is either falsy or empty, return entire collection
-  if (!criteria || Object.keys(criteria).length === 0) { return collection };
+  if (!criteria || criteria === undefined) { return collection };
 
   // Loop over collection
   for (let item of collection) {
